@@ -29,6 +29,8 @@ echo
 echo -n URL: ${} && read win_base_url
 echo
 echo netboot.xyz will attempt to load the following files:
+echo ${win_base_url}/${win_arch}/install.bat
+echo ${win_base_url}/${win_arch}/winpeshl.ini
 echo ${win_base_url}/${win_arch}/bootmgr
 echo ${win_base_url}/${win_arch}/boot/bcd
 echo ${win_base_url}/${win_arch}/boot/boot.sdi
@@ -42,6 +44,8 @@ isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
 :boot
 kernel http://${boot_domain}/wimboot
+initrd ${win_base_url}/${win_arch}/install.bat install.bat
+initrd ${win_base_url}/${win_arch}/winpeshl.ini winpeshl.ini
 initrd ${win_base_url}/${win_arch}/bootmgr bootmgr
 initrd ${win_base_url}/${win_arch}/boot/bcd bcd
 initrd ${win_base_url}/${win_arch}/boot/boot.sdi boot.sdi
