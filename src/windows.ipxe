@@ -43,7 +43,7 @@ goto windows
 isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
 :boot
-kernel ${win_base_url}/${win_arch}/wimboot
+kernel http://${boot_domain}/wimboot
 initrd ${win_base_url}/${win_arch}/install.bat install.bat
 initrd ${win_base_url}/${win_arch}/winpeshl.ini winpeshl.ini
 initrd ${win_base_url}/${win_arch}/bootmgr bootmgr
